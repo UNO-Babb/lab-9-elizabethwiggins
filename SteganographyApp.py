@@ -99,7 +99,7 @@ def numberToBinary(num):
   #Convert from decimal to binary
   while num > 0:
     binary = str(num % 2) + binary
-    num==num//2
+    num = num//2
 
   while len(binary) < 8:
     binary= "0" + binary
@@ -118,25 +118,32 @@ def binaryToNumber(bin):
     if lastDigit == '1':
       decimal = decimal + value
 
-    value= value *2
-    bin = bin[0:lastSpot]
+    value= value * 2
 
+    bin = bin[0:lastSpot]
 
 
   return decimal
 
 def main():
   #Ask user if they want to encode/decode
-  #"""
-  myImg = Image.open('pki.png')
-  myMsg = "This is a secret message I will hide in an image."
-  encode(myImg, myMsg)
-  myImg.close()
-  #"""
+
+
+  choice= input("encode or decode a message?:")
+
+  if choice == "encode":
+    
+    myImg = Image.open('pki.png')
+    myMsg = input("Message:")
+    encode(myImg, myMsg)
+    myImg.close()
+    
   
-  yourImg = Image.open('secretImg.png')
-  msg = decode(yourImg)
-  print(msg)
+  if choice == "decode":
+    yourImg = Image.open('secretImg.png')
+    msg = decode(yourImg)
+    print(msg)
+  
   
     
 if __name__ == '__main__':
